@@ -4,6 +4,7 @@ import QuestionCard from './components/QuestionCard';
 import QuizProgress from './components/QuizProgress';
 import ResultsSummary from './components/ResultsSummary';
 import { getQuizQuestions } from './api/examApi';
+import Footer from './components/Footer';
 
 function App() {
   const [view, setView] = useState('filter'); // 'filter' | 'quiz' | 'summary'
@@ -16,7 +17,6 @@ function App() {
   const [startTime, setStartTime] = useState(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
-  // Ticks the timer once per second, only while actively taking the quiz
   useEffect(() => {
     if (view !== 'quiz') return;
     const interval = setInterval(() => {
@@ -74,43 +74,36 @@ function App() {
 
   const correctSoFar = answers.filter(a => a.correct).length;
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {view === 'filter' && <FilterForm onSubmit={handleFilterSubmit} />}
-      {loading && <p className="text-center mt-8">Loading questions...</p>}
-      {error && <p className="text-center mt-8 text-red-600">Error: {error}</p>}
+return (
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow">
+        {view === 'filter' && <FilterForm onSubmit={handleFilterSubmit} />}
+        {loading && <p className="text-center mt-8">Cargando preguntas...</p>}
+        {error && <p className="text-center mt-8 text-error">Error: {error}</p>}
 
-      {view === 'quiz' && questions.length > 0 && (
-        <>
-          <QuizProgress
-            current={currentIndex + 1}
-            total={questions.length}
-            correct={correctSoFar}
-            answered={answers.length}
-            elapsedSeconds={elapsedSeconds}
-          />
-          <QuestionCard
-            key={questions[currentIndex].id}
-            question={questions[currentIndex]}
-            onAnswered={handleAnswered}
-          />
-          {answers.length === currentIndex + 1 && (
-            <div className="text-center mt-4">
-              <button onClick={handleNext} className="bg-gray-600 text-white rounded px-4 py-2">
-                {currentIndex + 1 < questions.length ? 'Next Question' : 'Finish Quiz'}
-              </button>
-            </div>
-          )}
-        </>
-      )}
+        {view === 'quiz' && questions.length > 0 && (
+          <>
+            <QuizProgress
+              current={currentIndex + 1} total={questions.length}
+              correct={correctSoFar} answered={answers.length}
+              elapsedSeconds={elapsedSeconds}
+            />
+            <QuestionCard key={questions[currentIndex].id} question={questions[currentIndex]} onAnswered={handleAnswered} />
+            {answers.length === currentIndex + 1 && (
+              <div className="text-center mt-7">
+                <button onClick={handleNext} className="bg-ink hover:bg-ink/90 text-white rounded-lg px-8 py-3.5 font-semibold transition-colors">
+                  {currentIndex + 1 < questions.length ? 'Siguiente Pregunta' : 'Finalizar Quiz'}
+                </button>
+              </div>
+            )}
+          </>
+        )}
 
-      {view === 'summary' && (
-        <ResultsSummary
-          answers={answers}
-          totalSeconds={elapsedSeconds}
-          onBackToFilters={handleBackToFilters}
-        />
-      )}
+        {view === 'summary' && (
+          <ResultsSummary answers={answers} totalSeconds={elapsedSeconds} onBackToFilters={handleBackToFilters} />
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }

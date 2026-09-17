@@ -5,14 +5,25 @@ function formatTime(totalSeconds) {
 }
 
 function QuizProgress({ current, total, correct, answered, elapsedSeconds }) {
+  const percent = (current / total) * 100;
+
   return (
-    <div className="max-w-3xl mx-auto px-6 pt-6 pb-4 mb-6 border-b flex justify-between items-center">
-      <div className="flex gap-8 text-lg font-semibold text-gray-700">
-        <span>Question {current}/{total}</span>
-        <span>Correct: {correct}/{answered}</span>
+    <div className="max-w-2xl mx-auto pt-7 px-8">
+      <div className="flex items-center justify-between">
+        <div className="flex gap-7 text-[15px] font-semibold text-ink">
+          <span>Pregunta {current}/{total}</span>
+          <span>Correctas: {correct}/{answered}</span>
+        </div>
+        <div className="bg-ink text-white font-mono font-bold text-xl px-4.5 py-2 rounded-lg flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" />
+          </svg>
+          {formatTime(elapsedSeconds)}
+        </div>
       </div>
-      <div className="bg-gray-800 text-white font-mono text-2xl font-bold px-5 py-2 rounded-lg">
-        {formatTime(elapsedSeconds)}
+
+      <div className="mt-4 h-1.5 bg-border rounded-full overflow-hidden">
+        <div className="h-full bg-accent rounded-full transition-all duration-300" style={{ width: `${percent}%` }} />
       </div>
     </div>
   );

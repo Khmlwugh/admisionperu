@@ -1,4 +1,23 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@theme {
+  --color-ink: #1D2233;
+  --color-cream: #F7F5F0;
+  --color-accent: #2F4FE0;
+  --color-accent-hover: #22399F;
+  --color-success: #1F8F5B;
+  --color-success-bg: #EAF6EF;
+  --color-error: #C23B3B;
+  --color-error-bg: #FBEDEC;
+  --color-muted: #8A8F9E;
+  --color-subtle: #5B6070;
+  --color-border: #E4E0D6;
+  --color-border-input: #D8D3C6;
+
+  --font-serif: 'Fraunces', serif;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+  @apply bg-cream text-ink font-sans;
+}
