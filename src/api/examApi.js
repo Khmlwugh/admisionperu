@@ -1,5 +1,14 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+async function parseErrorMessage(response, fallback) {
+  try {
+    const body = await response.json();
+    return body.message || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
 export async function getQuizQuestions({ collegeId, subjectId, examPeriod, count } = {}) {
   const params = new URLSearchParams();
   if (collegeId) params.append('collegeId', collegeId);
@@ -10,7 +19,7 @@ export async function getQuizQuestions({ collegeId, subjectId, examPeriod, count
   const response = await fetch(`${BASE_URL}/api/questions/quiz?${params.toString()}`);
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch quiz questions: ${response.status}`);
+    throw new Error(await parseErrorMessage(response, `Failed to fetch quiz questions (${response.status})`));
   }
 
   return response.json();
@@ -24,7 +33,7 @@ export async function checkAnswer(questionId, choiceId) {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to check answer: ${response.status}`);
+    throw new Error(await parseErrorMessage(response, `Failed to check answer (${response.status})`));
   }
 
   return response.json();
@@ -32,18 +41,24 @@ export async function checkAnswer(questionId, choiceId) {
 
 export async function getColleges() {
   const response = await fetch(`${BASE_URL}/api/colleges`);
-  if (!response.ok) throw new Error(`Failed to fetch colleges: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(await parseErrorMessage(response, `Failed to fetch colleges (${response.status})`));
+  }
   return response.json();
 }
 
 export async function getSubjects() {
   const response = await fetch(`${BASE_URL}/api/subjects`);
-  if (!response.ok) throw new Error(`Failed to fetch subjects: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(await parseErrorMessage(response, `Failed to fetch subjects (${response.status})`));
+  }
   return response.json();
 }
 
 export async function getExamPeriods() {
   const response = await fetch(`${BASE_URL}/api/questions/exam-periods`);
-  if (!response.ok) throw new Error(`Failed to fetch exam periods: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(await parseErrorMessage(response, `Failed to fetch exam periods (${response.status})`));
+  }
   return response.json();
 }
