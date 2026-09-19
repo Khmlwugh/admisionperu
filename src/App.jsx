@@ -7,7 +7,7 @@ import { getQuizQuestions } from './api/examApi';
 import Footer from './components/Footer';
 
 function App() {
-  const [view, setView] = useState('filter'); // 'filter' | 'quiz' | 'summary'
+  const [view, setView] = useState('filter');
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState([]);

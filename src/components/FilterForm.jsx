@@ -36,7 +36,7 @@ function FilterForm({ onSubmit }) {
 
   return (
     <div className="flex flex-col items-center pt-16 px-8">
-      <div className="font-serif font-bold text-2xl tracking-tight text-ink">CollegeQuiz</div>
+      <div className="font-serif font-bold text-2xl tracking-tight text-ink">Admisión Perú</div>
       <div className="text-base text-subtle mt-1.5 mb-10">Practica preguntas reales de admisión</div>
 
       <form onSubmit={handleSubmit} className="w-full max-w-md bg-white border border-border rounded-2xl p-9 shadow-sm">
@@ -67,7 +67,7 @@ function FilterForm({ onSubmit }) {
         <div className="mb-7">
           <label className={labelClasses}>Número de Preguntas</label>
           <input
-            type="number" min="1" max="20" value={count}
+            type="number" min="1" max="10" value={count}
             onChange={e => setCount(Number(e.target.value))}
             className={selectClasses}
           />
