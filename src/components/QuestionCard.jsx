@@ -15,7 +15,7 @@ function renderWithMath(text) {
 
 function CheckIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 lg:w-5 lg:h-5">
       <path d="M20 6 9 17l-5-5" />
     </svg>
   );
@@ -23,7 +23,7 @@ function CheckIcon() {
 
 function XIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 lg:w-5 lg:h-5">
       <path d="M18 6 6 18M6 6l12 12" />
     </svg>
   );
@@ -42,7 +42,7 @@ function QuestionCard({ question, onAnswered }) {
   }
 
   function choiceClasses(choice) {
-    const base = "text-left px-4.5 py-4 rounded-xl border-2 text-[15px] flex items-center justify-between transition-colors";
+    const base = "text-left px-4 py-3.5 lg:px-4.5 lg:py-4 rounded-xl border-2 text-sm lg:text-[15px] flex items-center justify-between gap-3 transition-colors min-h-11";
 
     if (!result) {
       return `${base} border-border-input bg-white hover:bg-accent/5 hover:border-accent cursor-pointer`;
@@ -57,22 +57,22 @@ function QuestionCard({ question, onAnswered }) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-8 pt-8">
-      <p className="text-[13px] font-semibold uppercase tracking-wide text-accent mb-3.5">
+    <div className="lg:max-w-2xl lg:mx-auto px-5 pt-5.5 lg:px-8 lg:pt-8">
+      <p className="text-[11px] lg:text-[13px] font-semibold uppercase tracking-wide text-accent mb-2.5 lg:mb-3.5">
         {question.collegeName} · {question.subjectName} · {question.examPeriod}
       </p>
 
       {question.textBlockContent && (
-        <div className="bg-white border border-border rounded-xl p-5 mb-5 whitespace-pre-line text-[15px]">
+        <div className="bg-white border border-border rounded-xl p-4 lg:p-5 mb-4 lg:mb-5 whitespace-pre-line text-sm lg:text-[15px]">
           {renderWithMath(question.textBlockContent)}
         </div>
       )}
 
-      <p className="text-[19px] leading-relaxed mb-7 whitespace-pre-line">
+      <p className="text-base lg:text-[19px] leading-relaxed mb-5 lg:mb-7 whitespace-pre-line">
         {renderWithMath(question.questionText)}
       </p>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2.5 lg:gap-3">
         {question.choices.map(choice => (
           <button key={choice.id} onClick={() => handleChoiceClick(choice.id)} className={choiceClasses(choice)}>
             <span>{renderWithMath(choice.choiceText)}</span>
