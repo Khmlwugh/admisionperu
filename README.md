@@ -1,16 +1,42 @@
-# React + Vite
+# AdmisionPerú (CollegeQuiz)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A practice-quiz frontend for Peruvian university entrance exam prep, in Spanish. Pulls real, filterable exam questions from [ExamAPI](https://github.com/Khmlwugh/examapi).
 
-Currently, two official plugins are available:
+**Live:** https://admisionperu.heygabo.dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Filter by universidad, materia, and periodo de examen (all optional)
+- Instant answer feedback with the correct choice always revealed
+- Live progress bar, running score, and a timer
+- Full results summary with a per-question breakdown
+- Responsive down to phone width (390px)
+- Math/chemistry notation rendered with KaTeX
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+React (Vite) · Tailwind CSS v4 · react-katex
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Running locally
+
+```bash
+npm install
+```
+
+Create a `.env` file:
+```
+VITE_API_BASE_URL=http://localhost:8080
+```
+(point this at ExamAPI running locally, or `https://examapi.heygabo.dev` to use the live backend)
+
+```bash
+npm run dev
+```
+
+## Deploying
+
+Static build, deployed on Vercel/Netlify. `VITE_API_BASE_URL` is set in the platform's dashboard (not the committed `.env`) to `https://examapi.heygabo.dev` for production.
+
+## Next up
+
+Rendering for text-block and image-bearing questions is untested with real data (no such questions transcribed yet). A companion daily-puzzle app (`univdle`), sharing most of these components, is planned next.
