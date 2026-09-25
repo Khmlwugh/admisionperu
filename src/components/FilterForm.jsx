@@ -36,7 +36,7 @@ function FilterForm({ onSubmit }) {
 
   return (
     <div className="flex flex-col items-center pt-12 px-5 lg:pt-16 lg:px-8">
-      <div className="font-serif font-bold text-xl lg:text-2xl tracking-tight text-ink">CollegeQuiz</div>
+      <div className="font-serif font-bold text-xl lg:text-2xl tracking-tight text-ink">Admisión Perú</div>
       <div className="text-sm lg:text-base text-subtle text-center mt-1 lg:mt-1.5 mb-7 lg:mb-10">Practica preguntas reales de admisión</div>
 
       <form onSubmit={handleSubmit} className="w-full lg:max-w-md bg-white border border-border rounded-2xl p-6 lg:p-9 shadow-sm">
