@@ -15,10 +15,10 @@ function ResultsSummary({ answers, totalSeconds, onBackToFilters }) {
       <div className="flex gap-2.5 lg:gap-4 mb-6 lg:mb-9 w-full lg:w-auto">
         {[
           { label: 'Puntaje', value: `${correctCount}/${answers.length}`, color: 'text-accent' },
-          { label: 'Tiempo', value: formatTime(totalSeconds), color: 'text-ink' },
-          { label: 'Precisión', value: `${accuracy}%`, color: 'text-ink' },
+          { label: 'Tiempo', value: formatTime(totalSeconds), color: 'text-text' },
+          { label: 'Precisión', value: `${accuracy}%`, color: 'text-text' },
         ].map(stat => (
-          <div key={stat.label} className="flex-1 lg:flex-none bg-white border border-border rounded-2xl px-3 lg:px-8 py-3.5 lg:py-5 text-center lg:min-w-[130px]">
+          <div key={stat.label} className="flex-1 lg:flex-none bg-card border border-line rounded-2xl px-3 lg:px-8 py-3.5 lg:py-5 text-center lg:min-w-[130px]">
             <div className="text-[10px] lg:text-[13px] font-semibold uppercase tracking-wide text-muted mb-1 lg:mb-1.5">{stat.label}</div>
             <div className={`font-serif font-bold text-xl lg:text-[28px] ${stat.color}`}>{stat.value}</div>
           </div>
@@ -44,7 +44,7 @@ function ResultsSummary({ answers, totalSeconds, onBackToFilters }) {
                 {a.correct ? 'Correcta' : 'Incorrecta'}
               </span>
             </div>
-            <p className="text-xs lg:text-[13px] text-subtle">{a.collegeName} · {a.subjectName} · {a.examPeriod}</p>
+            <p className="text-xs lg:text-[13px] text-muted">{a.collegeName} · {a.subjectName} · {a.examPeriod}</p>
             <span className={`hidden lg:flex items-center gap-1.5 font-semibold text-sm ${a.correct ? 'text-success' : 'text-error'}`}>
               {a.correct ? (
                 <>
@@ -62,7 +62,7 @@ function ResultsSummary({ answers, totalSeconds, onBackToFilters }) {
         ))}
       </ul>
 
-      <button onClick={onBackToFilters} className="w-full lg:w-auto bg-accent hover:bg-accent-hover text-white rounded-lg px-10 py-4 lg:py-3.5 text-base font-semibold transition-colors min-h-11">
+      <button onClick={onBackToFilters} className="w-full lg:w-auto bg-accent hover:bg-accent-hover text-on-accent rounded-lg px-10 py-4 lg:py-3.5 text-base font-semibold transition-colors min-h-11">
         Volver a los Filtros
       </button>
     </div>

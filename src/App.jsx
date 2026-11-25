@@ -95,7 +95,7 @@ return (
             <QuestionCard key={questions[currentIndex].id} question={questions[currentIndex]} onAnswered={handleAnswered} />
             {answers.length === currentIndex + 1 && (
               <div className="text-center mt-7">
-                <button onClick={handleNext} className="bg-ink hover:bg-ink/90 text-white rounded-lg px-8 py-3.5 font-semibold transition-colors">
+                <button onClick={handleNext} className="bg-text hover:bg-text/90 text-on-accent rounded-lg px-8 py-3.5 font-semibold transition-colors">
                   {currentIndex + 1 < questions.length ? 'Siguiente Pregunta' : 'Finalizar Quiz'}
                 </button>
               </div>
