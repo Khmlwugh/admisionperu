@@ -89,6 +89,14 @@ return (
 
         {view === 'quiz' && questions.length > 0 && (
           <>
+            <div className="lg:max-w-2xl lg:mx-auto px-5 lg:px-8 pt-4">
+              <button
+                onClick={handleBackToFilters}
+                className="text-sm text-muted hover:text-text transition-colors"
+              >
+                ← Volver a los filtros
+              </button>
+            </div>
             <QuizProgress
               current={currentIndex + 1} total={questions.length}
               correct={correctSoFar} answered={answers.length}
