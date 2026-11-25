@@ -45,15 +45,15 @@ function QuestionCard({ question, onAnswered }) {
     const base = "text-left px-4 py-3.5 lg:px-4.5 lg:py-4 rounded-xl border-2 text-sm lg:text-[15px] flex items-center justify-between gap-3 transition-colors min-h-11";
 
     if (!result) {
-      return `${base} border-border-input bg-white hover:bg-accent/5 hover:border-accent cursor-pointer`;
+      return `${base} border-line-strong bg-card hover:bg-accent/5 hover:border-accent cursor-pointer`;
     }
     if (choice.id === result.correctChoiceId) {
-      return `${base} border-success bg-success-bg text-ink`;
+      return `${base} border-success bg-success-bg text-text`;
     }
     if (choice.id === selectedChoiceId && !result.correct) {
-      return `${base} border-error bg-error-bg text-ink`;
+      return `${base} border-error bg-error-bg text-text`;
     }
-    return `${base} border-border-input bg-white text-muted opacity-70`;
+    return `${base} border-line-strong bg-card text-muted opacity-70`;
   }
 
   return (
@@ -63,7 +63,7 @@ function QuestionCard({ question, onAnswered }) {
       </p>
 
       {question.textBlockContent && (
-        <div className="bg-white border border-border rounded-xl p-4 lg:p-5 mb-4 lg:mb-5 whitespace-pre-line text-sm lg:text-[15px]">
+        <div className="bg-card border border-line rounded-xl p-4 lg:p-5 mb-4 lg:mb-5 whitespace-pre-line text-sm lg:text-[15px]">
           {renderWithMath(question.textBlockContent)}
         </div>
       )}
