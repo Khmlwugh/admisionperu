@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import  PomaMoon from "./icons/PomaMoon"
+import PomaSun from "./icons/PomaSun"
+
 
 function getInitialDark() {
   try {
@@ -28,7 +31,7 @@ export default function ThemeToggle() {
       aria-label={dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro"}
       className="p-2 text-sm text-muted hover:text-text"
     >
-      {dark ? "Claro" : "Oscuro"}
+    {dark ? <PomaSun size={60} /> : <PomaMoon size={60} />}
     </button>
   );
 }
