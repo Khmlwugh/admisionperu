@@ -50,10 +50,23 @@
   --color-success-bg: var(--success-bg);
   --color-error: var(--error);
   --color-error-bg: var(--error-bg);
+
 }
 
 @theme {
   /* pending addition of my persona poma font */
   --font-serif: "Fraunces", serif;
   --font-sans: "IBM Plex Sans", sans-serif;
+
+  --animate-drift: drift 30s linear infinite;
+  @keyframes drift {
+    to { transform: translate(var(--tile), var(--tile)); }
+  }
+}
+
+@utility bg-graph {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-text) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text) 7%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
 }

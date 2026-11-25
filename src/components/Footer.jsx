@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="border-t border-line py-5 px-8 flex items-center justify-center gap-2 text-sm text-muted">
+    <div className="border-t bg-card border-line py-5 px-8 flex items-center justify-center gap-2 text-sm text-muted">
       <span>Creado por Gabo</span>
       <span aria-hidden="true">·</span>
       <a
