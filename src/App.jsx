@@ -6,6 +6,7 @@ import ResultsSummary from './components/ResultsSummary';
 import { getQuizQuestions } from './api/examApi';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
+import SymbolBackground from './components/SymbolBackground';
 
 function App() {
   const [view, setView] = useState('filter');
@@ -76,7 +77,8 @@ function App() {
   const correctSoFar = answers.filter(a => a.correct).length;
 
 return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`relative isolate min-h-screen flex flex-col bg-surface text-text ${view !== 'filter' ? 'bg-graph' : ''}`}>
+      {view === 'filter' && <SymbolBackground/>}
       <header className="flex justify-end px-4 py-3 lg:px-8">
         <ThemeToggle />
       </header>
