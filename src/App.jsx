@@ -4,6 +4,7 @@ import QuestionCard from './components/QuestionCard';
 import QuizProgress from './components/QuizProgress';
 import ResultsSummary from './components/ResultsSummary';
 import { getQuizQuestions } from './api/examApi';
+import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
 
 function App() {
@@ -76,6 +77,9 @@ function App() {
 
 return (
     <div className="min-h-screen flex flex-col">
+      <header className="flex justify-end px-4 py-3 lg:px-8">
+        <ThemeToggle />
+      </header>
       <div className="flex-grow">
         {view === 'filter' && <FilterForm onSubmit={handleFilterSubmit} />}
         {loading && <p className="text-center mt-8">Cargando preguntas...</p>}

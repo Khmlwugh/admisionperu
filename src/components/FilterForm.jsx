@@ -31,15 +31,17 @@ function FilterForm({ onSubmit }) {
     });
   }
 
-  const selectClasses = "w-full box-border px-3.5 py-3.5 lg:py-3 border border-border-input rounded-lg text-base lg:text-[15px] font-sans text-ink bg-white";
-  const labelClasses = "block text-[13px] lg:text-sm font-semibold mb-1.5 lg:mb-2 text-ink";
+  const selectClasses = "w-full box-border px-3.5 py-3.5 lg:py-3 border border-line-strong rounded-lg text-base lg:text-[15px] font-sans text-text bg-card";
+  const labelClasses = "block text-[13px] lg:text-sm font-semibold mb-1.5 lg:mb-2 text-text";
 
   return (
-    <div className="flex flex-col items-center pt-12 px-5 lg:pt-16 lg:px-8">
-      <div className="font-serif font-bold text-xl lg:text-2xl tracking-tight text-ink">Admisión Perú</div>
-      <div className="text-sm lg:text-base text-subtle text-center mt-1 lg:mt-1.5 mb-7 lg:mb-10">Practica preguntas reales de admisión</div>
+    
 
-      <form onSubmit={handleSubmit} className="w-full lg:max-w-md bg-white border border-border rounded-2xl p-6 lg:p-9 shadow-sm">
+    <div className="flex flex-col items-center pt-12 px-5 lg:pt-16 lg:px-8">
+      <div className="font-serif font-bold text-xl lg:text-2xl tracking-tight text-text">Admisión Perú</div>
+      <div className="text-sm lg:text-base text-muted text-center mt-1 lg:mt-1.5 mb-7 lg:mb-10">Practica preguntas reales de admisión</div>
+
+      <form onSubmit={handleSubmit} className="w-full lg:max-w-md bg-card border border-line rounded-2xl p-6 lg:p-9 shadow-sm">
         <div className="mb-4.5 lg:mb-5">
           <label className={labelClasses}>Universidad</label>
           <select value={collegeId} onChange={e => setCollegeId(e.target.value)} className={selectClasses}>
@@ -73,7 +75,7 @@ function FilterForm({ onSubmit }) {
           />
         </div>
 
-        <button type="submit" className="w-full bg-accent hover:bg-accent-hover text-white rounded-lg py-4 lg:py-3.5 text-base font-semibold transition-colors min-h-11">
+        <button type="submit" className="w-full bg-accent hover:bg-accent-hover text-on-accent rounded-lg py-4 lg:py-3.5 text-base font-semibold transition-colors min-h-11">
           Comenzar Quiz
         </button>
       </form>
