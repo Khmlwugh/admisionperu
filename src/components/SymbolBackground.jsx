@@ -3,7 +3,7 @@ import { useId, useMemo } from "react";
 const DEFAULT_SYMBOLS = ["π", "e⁻", "⇌", "Ψ", "∑", "S/", "≠", "E=mc²", "∴", "λ", "x²","Δt"];
 
 const DIRECTIONS = {
-  "down-right": [1, 3], "down-left": [-1, 1],
+  "down-right": [1, 1], "down-left": [-1, 1],
   "up-right": [1, -1],  "up-left": [-1, -1],
   right: [1, 0], left: [-1, 0], down: [0, 1], up: [0, -1],
 };
@@ -19,14 +19,14 @@ function seeded(seed) {
 export default function SymbolBackground({
   symbols = DEFAULT_SYMBOLS,
   tile = 200,
-  cols = 3,
+  cols = 4,
   opacity = 0.15,
   seed = 20,
   duration = 5,
   direction = "down-right",
   minSize = 10,
-  maxSize = 18,
-  maxRotation = 5,
+  maxSize = 24,
+  maxRotation = 35,
 }) {
   const id = "sym-" + useId().replace(/[^a-zA-Z0-9_-]/g, "");
   const [dx, dy] = DIRECTIONS[direction] ?? DIRECTIONS["down-right"];
