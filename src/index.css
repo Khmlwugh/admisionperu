@@ -53,8 +53,14 @@
 
 }
 
+@font-face {
+  font-family: "Coronica Draft";
+  src: url("/fonts/CoronicaDraft-Regular-v03.woff2") format("woff2");
+  font-display: swap;
+}
+
 @theme {
-  /* pending addition of my persona poma font */
+  --font-title: "Coronica Draft","Fraunces", serif;
   --font-serif: "Fraunces", serif;
   --font-sans: "IBM Plex Sans", sans-serif;
 
